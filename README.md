@@ -1,4 +1,4 @@
-# md-models demo: Database + API + MCP
+# Supporting Information: MD-Models infrastructure
 
 This project runs a local `mdmodels` stack with:
 
