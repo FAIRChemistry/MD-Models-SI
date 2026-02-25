@@ -1,0 +1,18 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir uv \
+    && uv pip install --system openai \
+    && uv pip install --system --prerelease=allow "mdmodels[mcp,pgvector,rest]==0.3.0"
+
+# Copy project files including config.toml and model specs.
+COPY . .
+
+CMD ["mdmodels", "sql", "init", "--config", "config.toml"]
