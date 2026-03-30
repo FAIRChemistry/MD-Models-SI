@@ -12,8 +12,8 @@ jobs:
             - uses: actions/checkout@v4
 
             - name: Synchronize to DV
-              uses: SimTech-Research-Data-Management/dataverse-sync@v3
+              uses: SimTech-Research-Data-Management/dataverse-sync@main
               with:
-                  dataverse_url: "https://demo.dataverse.org"
+                  dataverse_url: "https://darus.uni-stuttgart.de"
                   api_token: ${{ secrets.DV_TOKEN }}
                   persistent_id: "doi:10.18419/DARUS-5831"
