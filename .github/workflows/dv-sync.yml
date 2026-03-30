@@ -12,7 +12,7 @@ jobs:
             - uses: actions/checkout@v4
 
             - name: Synchronize to DV
-              uses: SimTech-Research-Data-Management/dataverse-sync@v2
+              uses: SimTech-Research-Data-Management/dataverse-sync@v3
               with:
                   dataverse_url: "https://demo.dataverse.org"
                   api_token: ${{ secrets.DV_TOKEN }}
