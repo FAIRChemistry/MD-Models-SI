@@ -2,7 +2,7 @@ name: Dataverse Sync
 
 on:
     push:
-        branches: [main]
+        branches: [master]
 
 jobs:
     sync-to-dataverse:
