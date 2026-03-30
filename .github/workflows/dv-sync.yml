@@ -1,0 +1,19 @@
+name: Dataverse Sync
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    sync-to-dataverse:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Synchronize to DV
+              uses: SimTech-Research-Data-Management/dataverse-sync@v2
+              with:
+                  dataverse_url: "https://demo.dataverse.org"
+                  api_token: ${{ secrets.DV_TOKEN }}
+                  persistent_id: "doi:10.18419/DARUS-5831"
