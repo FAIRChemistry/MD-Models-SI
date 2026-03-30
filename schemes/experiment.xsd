@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Roots -->
+    <xs:element name="Experiment" type="ExperimentType"/>
+    <xs:element name="Molecule" type="MoleculeType"/>
+    <xs:element name="Enzyme" type="EnzymeType"/>
+    <xs:element name="Conditions" type="ConditionsType"/>
+
+    <!-- Experiment Definition -->
+    <xs:complexType name="ExperimentType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        A unique identifier or descriptive name for the experiment
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="description" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Detailed description of the experimental procedure, objectives, and
+                        expected outcomes
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="molecules">
+                <xs:annotation>
+                    <xs:documentation>
+                        Array of all chemical compounds involved in the reaction (substrates,
+                        products, cofactors, inhibitors)
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Molecule" type="MoleculeType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="enzymes">
+                <xs:annotation>
+                    <xs:documentation>
+                        Array of all enzymes used as catalysts in the experiment
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Enzyme" type="EnzymeType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="conditions" type="ConditionsType">
+                <xs:annotation>
+                    <xs:documentation>
+                        Environmental parameters under which the experiment is conducted
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Molecule Definition -->
+    <xs:complexType name="MoleculeType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Chemical name or identifier (IUPAC name, common name, or database ID)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="initial_concentration" type="xs:float">
+                <xs:annotation>
+                    <xs:documentation>
+                        Starting concentration of the molecule in the reaction mixture
+                        (typically in mM or μM)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="role" type="RoleType">
+                <xs:annotation>
+                    <xs:documentation>
+                        Role of the molecule in the reaction (substrate, product, cofactor,
+                        inhibitor)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Enzyme Definition -->
+    <xs:complexType name="EnzymeType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Enzyme name, EC number, or protein identifier from databases like
+                        UniProt
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="initial_concentration" type="xs:float">
+                <xs:annotation>
+                    <xs:documentation>
+                        Starting concentration of the enzyme in the reaction mixture
+                        (typically in mg/mL or μM)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="role" type="RoleType">
+                <xs:annotation>
+                    <xs:documentation>
+                        Role of the enzyme in the reaction (enzyme, cofactor, inhibitor)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Conditions Definition -->
+    <xs:complexType name="ConditionsType">
+        <xs:sequence>
+            <xs:element name="temperature" type="xs:float">
+                <xs:annotation>
+                    <xs:documentation>
+                        Temperature of the reaction mixture (typically in °C)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="pH" type="xs:float">
+                <xs:annotation>
+                    <xs:documentation>
+                        pH of the reaction mixture (typically in pH units)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Enum Role Definition -->
+    <xs:simpleType name="RoleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="cofactor"/>
+            <xs:enumeration value="enzyme"/>
+            <xs:enumeration value="inhibitor"/>
+            <xs:enumeration value="product"/>
+            <xs:enumeration value="substrate"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

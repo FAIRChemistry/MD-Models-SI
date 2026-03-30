@@ -1,0 +1,25 @@
+[meta]
+name = "mdmodels"
+description = "This is a code and schema generator for mdmodels."
+paths = ["model.md"]
+
+[generate]
+# Code generators
+python-dataclass = { out = "code/experiment_dataclass.py" }
+python-pydantic-xml = { out = "code/experiment_pydantic_xml.py" }
+python-pydantic = { out = "code/experiment_pydantic.py" }
+typescript = { out = "code/experiment.ts" }
+typescript-zod = { out = "code/experiment-zod.ts" }
+rust = { out = "code/experiment.rs" }
+golang = { out = "code/experiment.go" }
+julia = { out = "code/experiment.jl" }
+
+# Schema generators
+xml-schema = { out = "schemes/experiment.xsd" }
+json-schema = { out = "schemes/experiment.json", root = "Experiment" }
+protobuf = { out = "schemes/experiment.proto" }
+graphql = { out = "schemes/experiment.graphql" }
+linkml = { out = "schemes/experiment-linkml.yaml" }
+
+# Documentation generators
+mermaid = { out = "diagrams/experiment.md" }

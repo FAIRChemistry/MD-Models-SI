@@ -1,0 +1,73 @@
+/**
+ * This file contains Protocol Buffer message definitions.
+ *
+ * Protocol Buffers (protobuf) is Google's language-neutral, platform-neutral,
+ * extensible mechanism for serializing structured data.
+ *
+ * WARNING: This is an auto-generated file.
+ * Do not edit directly - any changes will be overwritten.
+ */
+
+
+syntax = "proto3";
+
+package model specification;
+//
+// Model Specification Enum definitions
+//
+enum Role {
+  COFACTOR = 0; // cofactor
+  ENZYME = 1; // enzyme
+  INHIBITOR = 2; // inhibitor
+  PRODUCT = 3; // product
+  SUBSTRATE = 4; // substrate
+}
+
+
+//
+// Model Specification Message definitions
+//
+// OneOf type definitions for attributes with multiple types
+message Experiment {
+  // A unique identifier or descriptive name for the experiment
+  optional string name = 1;
+  // Detailed description of the experimental procedure, objectives, and
+  // expected outcomes
+  optional string description = 2;
+  // Array of all chemical compounds involved in the reaction (substrates,
+  // products, cofactors, inhibitors)
+  repeated Molecule molecules = 3;
+  // Array of all enzymes used as catalysts in the experiment
+  repeated Enzyme enzymes = 4;
+  // Environmental parameters under which the experiment is conducted
+  optional Conditions conditions = 5;
+}
+
+message Molecule {
+  // Chemical name or identifier (IUPAC name, common name, or database ID)
+  optional string name = 1;
+  // Starting concentration of the molecule in the reaction mixture
+  // (typically in mM or μM)
+  optional double initial_concentration = 2;
+  // Role of the molecule in the reaction (substrate, product, cofactor,
+  // inhibitor)
+  optional Role role = 3;
+}
+
+message Enzyme {
+  // Enzyme name, EC number, or protein identifier from databases like
+  // UniProt
+  optional string name = 1;
+  // Starting concentration of the enzyme in the reaction mixture
+  // (typically in mg/mL or μM)
+  optional double initial_concentration = 2;
+  // Role of the enzyme in the reaction (enzyme, cofactor, inhibitor)
+  optional Role role = 3;
+}
+
+message Conditions {
+  // Temperature of the reaction mixture (typically in °C)
+  optional double temperature = 1;
+  // pH of the reaction mixture (typically in pH units)
+  optional double p_h = 2;
+}

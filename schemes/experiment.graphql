@@ -1,0 +1,71 @@
+# This file contains GraphQL type definitions.
+#
+# WARNING: This is an auto-generated file.
+# Do not edit directly - any changes will be overwritten.
+
+
+# Scalar wrapper types
+
+# Union type definitions
+
+# Model Specification Type definitions
+type Experiment {
+  name: String
+  description: String
+  molecules: [Molecule]
+  enzymes: [Enzyme]
+  conditions: Conditions
+}
+
+type Molecule {
+  name: String
+  initial_concentration: Float
+  role: Role
+}
+
+type Enzyme {
+  name: String
+  initial_concentration: Float
+  role: Role
+}
+
+type Conditions {
+  temperature: Float
+  pH: Float
+}
+
+# Model Specification Enum definitions
+enum Role {
+  COFACTOR # cofactor
+  ENZYME # enzyme
+  INHIBITOR # inhibitor
+  PRODUCT # product
+  SUBSTRATE # substrate
+}
+
+
+# Query type definitions
+type Query {
+
+  # Experiment queries
+  allExperiments: [Experiment]
+  experimentByName(name: String): [Experiment]
+  experimentByDescription(description: String): [Experiment]
+
+  # Molecule queries
+  allMolecules: [Molecule]
+  moleculeByName(name: String): [Molecule]
+  moleculeByInitialConcentration(initial_concentration: Float): [Molecule]
+  moleculeByRole(role: Role): [Molecule]
+
+  # Enzyme queries
+  allEnzymes: [Enzyme]
+  enzymeByName(name: String): [Enzyme]
+  enzymeByInitialConcentration(initial_concentration: Float): [Enzyme]
+  enzymeByRole(role: Role): [Enzyme]
+
+  # Conditions queries
+  allConditionss: [Conditions]
+  conditionsByTemperature(temperature: Float): [Conditions]
+  conditionsByPH(pH: Float): [Conditions]
+}

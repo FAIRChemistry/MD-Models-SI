@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://mdmodel.net",
+  "title": "Experiment",
+  "type": "object",
+  "description": "A single experiment represents a complete biological assay or reaction study, capturing all the essential components and parameters needed to reproduce and analyze the experimental results. Each experiment serves as a discrete unit of scientific investigation with defined inputs, conditions, and measurable outcomes.",
+  "properties": {
+    "conditions": {
+      "title": "conditions",
+      "type": "object",
+      "description": "Environmental parameters under which the experiment is conducted",
+      "$ref": "#/$defs/Conditions"
+    },
+    "description": {
+      "title": "description",
+      "type": "string",
+      "description": "Detailed description of the experimental procedure, objectives, and expected outcomes"
+    },
+    "enzymes": {
+      "title": "enzymes",
+      "type": "array",
+      "description": "Array of all enzymes used as catalysts in the experiment",
+      "items": {
+        "$ref": "#/$defs/Enzyme"
+      }
+    },
+    "molecules": {
+      "title": "molecules",
+      "type": "array",
+      "description": "Array of all chemical compounds involved in the reaction (substrates, products, cofactors, inhibitors)",
+      "items": {
+        "$ref": "#/$defs/Molecule"
+      }
+    },
+    "name": {
+      "title": "name",
+      "type": "string",
+      "description": "A unique identifier or descriptive name for the experiment"
+    }
+  },
+  "$defs": {
+    "Conditions": {
+      "title": "Conditions",
+      "type": "object",
+      "description": "Conditions encompass the critical environmental and physical parameters that govern the experimental setup and directly influence enzyme activity, reaction kinetics, and overall experimental outcomes. These parameters must be carefully controlled and documented for reproducible results.",
+      "properties": {
+        "pH": {
+          "title": "pH",
+          "type": "number",
+          "description": "pH of the reaction mixture (typically in pH units)"
+        },
+        "temperature": {
+          "title": "temperature",
+          "type": "number",
+          "description": "Temperature of the reaction mixture (typically in °C)"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "Enzyme": {
+      "title": "Enzyme",
+      "type": "object",
+      "description": "An enzyme is a biological catalyst, typically a protein, that facilitates and accelerates specific chemical reactions by lowering the activation energy required. Enzymes are highly specific to their substrates and play crucial roles in metabolic pathways and biotechnological applications.",
+      "properties": {
+        "initial_concentration": {
+          "title": "initial_concentration",
+          "type": "number",
+          "description": "Starting concentration of the enzyme in the reaction mixture (typically in mg/mL or μM)"
+        },
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Enzyme name, EC number, or protein identifier from databases like UniProt"
+        },
+        "role": {
+          "title": "role",
+          "type": "string",
+          "description": "Role of the enzyme in the reaction (enzyme, cofactor, inhibitor)",
+          "$ref": "#/$defs/Role"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "Molecule": {
+      "title": "Molecule",
+      "type": "object",
+      "description": "A molecule represents a chemical compound or substrate involved in the biological reaction, including both reactants and products. This encompasses small molecules, cofactors, inhibitors, and any other chemical species that participate in or influence the enzymatic process.",
+      "properties": {
+        "initial_concentration": {
+          "title": "initial_concentration",
+          "type": "number",
+          "description": "Starting concentration of the molecule in the reaction mixture (typically in mM or μM)"
+        },
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Chemical name or identifier (IUPAC name, common name, or database ID)"
+        },
+        "role": {
+          "title": "role",
+          "type": "string",
+          "description": "Role of the molecule in the reaction (substrate, product, cofactor, inhibitor)",
+          "$ref": "#/$defs/Role"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "Role": {
+      "title": "Role",
+      "type": "string",
+      "enum": [
+        "cofactor",
+        "enzyme",
+        "inhibitor",
+        "product",
+        "substrate"
+      ]
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}
