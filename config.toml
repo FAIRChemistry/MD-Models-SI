@@ -7,6 +7,5 @@ type = "pgvector"
 [rest.endpoints]
 Experiment = ["create", "list", "retrieve", "search", "vectorsearch"]
 
-[mcp.tools.Experiment]
-description = "Create a new experiment"
-allow_create = true
+[mcp]
+all_create = true

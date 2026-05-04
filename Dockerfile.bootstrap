@@ -10,7 +10,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && pip install --no-cache-dir uv \
     && uv pip install --system openai \
-    && uv pip install --system --prerelease=allow "mdmodels[mcp,pgvector,rest]==0.3.0"
+    && uv pip install --system --prerelease=allow "mdmodels[mcp,pgvector,rest]==0.3.1"
 
 # Copy project files including config.toml and model specs.
 COPY . .
