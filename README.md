@@ -8,6 +8,59 @@ This project runs a local `mdmodels` stack with:
 
 The notebook `UploadDataset.ipynb` uses the REST API directly (`http://localhost:8800`) to create and list `Experiment` datasets defined by `model.md`.
 
+## The `Experiment` model
+
+`model.md` is the single Markdown specification the whole stack is built from. It
+defines four objects and one enumeration:
+
+- `Experiment` — a name, a description, a list of `Molecule` objects, a list of
+  `Enzyme` objects, and a single `Conditions` object.
+- `Molecule` — a name, an initial concentration, and a `Role`.
+- `Enzyme` — a name, an initial concentration, and a `Role`.
+- `Conditions` — temperature and pH.
+- `Role` — an enumeration with the values `substrate`, `product`, `cofactor`,
+  `inhibitor`, `enzyme`.
+
+The frontmatter declares `schema:` and `OBO:` prefixes, and most attributes carry
+a `Term:` annotation from schema.org, ChEBI, PR or PATO.
+
+## Generated artefacts
+
+`gen.toml` is the pipeline configuration. Running `md-models pipeline -i gen.toml`
+regenerates every artefact from `model.md`:
+
+- `code/` — Python (dataclass, Pydantic, Pydantic-XML), TypeScript, TypeScript
+  (Zod), Rust, Go, Julia.
+- `schemes/` — XSD, JSON Schema, Protobuf, GraphQL, LinkML.
+- `diagrams/` — a Mermaid class diagram.
+
+## MCP server tools
+
+The MCP server (`mcp`, host port `7001`) is built by py-mdmodels (pinned to
+0.3.1 in the Dockerfiles; the tool set is the same in 0.4.0) from `model.md`. With `all_create = true` in `config.toml` it exposes 14 tools for the
+`Experiment` model:
+
+| Tool | Function |
+|---|---|
+| `Get_Table_Schema` | Returns the Markdown data model with all fields, types, relationships and nesting. |
+| `Get_Table_Relationships` | Returns the foreign-key mappings of a table. |
+| `Upsert_Experiment`, `Upsert_Molecule`, `Upsert_Enzyme`, `Upsert_Conditions` | Write a nested record across the tables in one transaction, or update an existing one when its row key is given. Nested fields may reference existing rows by key. |
+| `Select_Table` | Selects rows from one table with optional filters and a row limit. |
+| `Aggregate_Table` | count / sum / avg / min / max / stddev / variance over a table, with optional filters. |
+| `Plot_Table` | Queries a table with optional filters, optionally grouped by a column of a related table, and renders an interactive chart. |
+| `Download_Entry` | Fetches one entry by primary key as a JSON tree for copying or download. |
+| `Data_Entry` | Renders a typed form whose fields, labels, types and bounds are specified by the agent. |
+| `Submit_Data_Entry` | Form callback: checks the submitted values against the form specification and returns them to the agent. |
+| `Annotate_Entries`, `Get_Annotations` | Free-text annotations on rows of any table. |
+
+A `Vector_Search` tool is added when a table has an embedding column. The form
+fields are not derived from the schema: the agent writes the form and maps the
+submitted values to columns when it calls an `Upsert_*` tool.
+
+The conversations in `chats/` were run with earlier server versions. The first used
+a `Create Experiment` tool, which the `Upsert_*` tools replaced in April 2026. Tool
+calls were not logged, so their arguments are not part of the transcripts.
+
 ## What is running
 
 `docker-compose.yml` starts 4 services:
@@ -26,10 +79,9 @@ The notebook `UploadDataset.ipynb` uses the REST API directly (`http://localhost
 
 ## 1) Start the stack locally
 
-From this folder:
+From the repository root:
 
 ```bash
-cd /Users/janrange/GitHub/md-models-demo/database
 ./start.sh
 ```
 
@@ -129,9 +181,23 @@ Stop everything:
 docker compose down
 ```
 
+## Analysis scripts
+
+Two self-contained checks are kept alongside the model. Each has its own
+`pyproject.toml` and is run with `uv run`.
+
+- `reasoner-check/` — generates the OWL serialisation of `model.md` and of the
+  EnzymeML v2 schema, then tests logical consistency with the HermiT reasoner and
+  an OWL-RL closure. Output: `reasoner-check/report.json`.
+- `linkml-roundtrip/` — exports each model to LinkML, reloads it with
+  `linkml-runtime`, and reports which modelling features survive the conversion.
+  Output: `linkml-roundtrip/report.json`.
+
+Both need `md-models` 0.2.11 or newer available to `mdmodels-core`.
+
 ## Representative Claude Desktop conversations
 
-These conversations were conducted via Claude Desktop and utilize the local MCP server described in this repository.
+These conversations were conducted via Claude Desktop and use the local MCP server described in this repository.
 
 - [Create a new experiment](https://claude.ai/share/c970ec8f-5276-4424-af5c-763444ddc6bc)
 - [Query existing experiments](https://claude.ai/share/29a18161-596b-4036-9d9d-56e43ab397d1)

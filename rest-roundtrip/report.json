@@ -1,0 +1,25 @@
+{
+ "records": 100,
+ "molecules": 347,
+ "enzymes": 199,
+ "identical": 100,
+ "differ_only_in_array_order": 0,
+ "differ_in_content": 0,
+ "relinked_order_sent": [
+  6,
+  5,
+  4,
+  3,
+  2,
+  1
+ ],
+ "relinked_order_returned": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6
+ ],
+ "relinked_order_preserved": false
+}

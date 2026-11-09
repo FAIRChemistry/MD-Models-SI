@@ -1,0 +1,680 @@
+{
+  "description": "MD-Models to LinkML export round-trip. Each model is exported to a LinkML schema and reloaded with linkml-runtime SchemaView. The 'lost' list holds source features with no representation in the reloaded schema; 'changed' holds features whose value differs.",
+  "mdmodels_core": "0.2.11",
+  "linkml_runtime": "1.11.1",
+  "results": [
+    {
+      "model": "experiment-demo",
+      "source": "model.md",
+      "summary": {
+        "classes": 4,
+        "slots": 13,
+        "enumerations": 1,
+        "slots_with_ontology_term": 12,
+        "slots_with_default": 0,
+        "slots_with_constraint": 0
+      },
+      "lost_count": 13,
+      "changed_count": 0,
+      "lost_by_feature": {
+        "xml-name annotation": 13
+      },
+      "lost": [
+        {
+          "feature": "xml-name annotation",
+          "location": "Conditions.pH",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Conditions.temperature",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Enzyme.initial_concentration",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Enzyme.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Enzyme.role",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Experiment.conditions",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Experiment.description",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Experiment.enzymes",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Experiment.molecules",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Experiment.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Molecule.initial_concentration",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Molecule.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Molecule.role",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        }
+      ],
+      "changed": [],
+      "notes": {
+        "identifier_slots": [],
+        "identifier_slots_comment": "Slots with an Identifier range are written as LinkML 'identifier: true' slots. LinkML then treats them as required; the MD-Models importer maps them back to an optional Identifier attribute, so the bidirectional round-trip is unaffected.",
+        "xml_name_annotation_comment": "The xml-name annotation is auto-derived from the slot name and is regenerated identically on import; it has no LinkML slot."
+      }
+    },
+    {
+      "model": "enzymeml-v2",
+      "source": "linkml-roundtrip/models/enzymeml_v2.md",
+      "summary": {
+        "classes": 16,
+        "slots": 98,
+        "enumerations": 4,
+        "slots_with_ontology_term": 38,
+        "slots_with_default": 10,
+        "slots_with_constraint": 3
+      },
+      "lost_count": 109,
+      "changed_count": 0,
+      "lost_by_feature": {
+        "default value": 10,
+        "constraint:exclusiveminimum": 1,
+        "xml-name annotation": 98
+      },
+      "lost": [
+        {
+          "feature": "default value",
+          "location": "Complex.constant"
+        },
+        {
+          "feature": "default value",
+          "location": "EnzymeMLDocument.version"
+        },
+        {
+          "feature": "default value",
+          "location": "MeasurementData.is_simulated"
+        },
+        {
+          "feature": "default value",
+          "location": "Parameter.constant"
+        },
+        {
+          "feature": "default value",
+          "location": "Parameter.fit"
+        },
+        {
+          "feature": "default value",
+          "location": "Protein.constant"
+        },
+        {
+          "feature": "default value",
+          "location": "Reaction.reversible"
+        },
+        {
+          "feature": "default value",
+          "location": "ReactionElement.stoichiometry"
+        },
+        {
+          "feature": "default value",
+          "location": "SmallMolecule.constant"
+        },
+        {
+          "feature": "default value",
+          "location": "Vessel.constant"
+        },
+        {
+          "feature": "constraint:exclusiveminimum",
+          "location": "ReactionElement.stoichiometry"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "BaseUnit.exponent",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "BaseUnit.kind",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "BaseUnit.multiplier",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "BaseUnit.scale",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Complex.constant",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Complex.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Complex.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Complex.participants",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Complex.vessel_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Creator.family_name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Creator.given_name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Creator.mail",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.complexes",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.created",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.creators",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.description",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.equations",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.measurements",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.modified",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.parameters",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.proteins",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.reactions",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.references",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.small_molecules",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.version",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "EnzymeMLDocument.vessels",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Equation.equation",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Equation.equation_type",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Equation.species_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Equation.variables",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.group_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.ph",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.species_data",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.temperature",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Measurement.temperature_unit",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.data",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.data_type",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.data_unit",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.initial",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.is_simulated",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.prepared",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.species_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.time",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "MeasurementData.time_unit",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "ModifierElement.role",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "ModifierElement.species_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.constant",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.fit",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.initial_value",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.lower_bound",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.stderr",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.symbol",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.unit",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.upper_bound",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Parameter.value",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.constant",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.ecnumber",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.organism",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.organism_tax_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.references",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.sequence",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Protein.vessel_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.kinetic_law",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.modifiers",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.products",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.reactants",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Reaction.reversible",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "ReactionElement.species_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "ReactionElement.stoichiometry",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.canonical_smiles",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.constant",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.inchi",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.inchikey",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.references",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.synonymous_names",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "SmallMolecule.vessel_id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "UnitDefinition.base_units",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "UnitDefinition.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "UnitDefinition.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Variable.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Variable.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Variable.symbol",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Vessel.constant",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Vessel.id",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Vessel.name",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Vessel.unit",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        },
+        {
+          "feature": "xml-name annotation",
+          "location": "Vessel.volume",
+          "note": "auto-derived from the slot name; no LinkML slot"
+        }
+      ],
+      "changed": [],
+      "notes": {
+        "identifier_slots": [
+          "Complex.id",
+          "Complex.participants",
+          "Complex.vessel_id",
+          "EnzymeMLDocument.references",
+          "Equation.species_id",
+          "Measurement.group_id",
+          "Measurement.id",
+          "MeasurementData.species_id",
+          "ModifierElement.species_id",
+          "Parameter.id",
+          "Protein.id",
+          "Protein.organism_tax_id",
+          "Protein.references",
+          "Protein.vessel_id",
+          "Reaction.id",
+          "ReactionElement.species_id",
+          "SmallMolecule.id",
+          "SmallMolecule.references",
+          "SmallMolecule.vessel_id",
+          "Variable.id",
+          "Vessel.id"
+        ],
+        "identifier_slots_comment": "Slots with an Identifier range are written as LinkML 'identifier: true' slots. LinkML then treats them as required; the MD-Models importer maps them back to an optional Identifier attribute, so the bidirectional round-trip is unaffected.",
+        "xml_name_annotation_comment": "The xml-name annotation is auto-derived from the slot name and is regenerated identically on import; it has no LinkML slot."
+      }
+    }
+  ]
+}

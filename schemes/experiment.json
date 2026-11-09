@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://mdmodel.net",
+  "$id": "https://github.com/FAIRChemistry/md-models-demo/",
   "title": "Experiment",
   "type": "object",
   "description": "A single experiment represents a complete biological assay or reaction study, capturing all the essential components and parameters needed to reproduce and analyze the experimental results. Each experiment serves as a discrete unit of scientific investigation with defined inputs, conditions, and measurable outcomes.",
@@ -14,12 +14,14 @@
     "description": {
       "title": "description",
       "type": "string",
-      "description": "Detailed description of the experimental procedure, objectives, and expected outcomes"
+      "description": "Detailed description of the experimental procedure, objectives, and expected outcomes",
+      "$term": "https://schema.org/description"
     },
     "enzymes": {
       "title": "enzymes",
       "type": "array",
       "description": "Array of all enzymes used as catalysts in the experiment",
+      "$term": "http://purl.obolibrary.org/obo/PR_000000001",
       "items": {
         "$ref": "#/$defs/Enzyme"
       }
@@ -28,6 +30,7 @@
       "title": "molecules",
       "type": "array",
       "description": "Array of all chemical compounds involved in the reaction (substrates, products, cofactors, inhibitors)",
+      "$term": "http://purl.obolibrary.org/obo/CHEBI_23367",
       "items": {
         "$ref": "#/$defs/Molecule"
       }
@@ -35,7 +38,8 @@
     "name": {
       "title": "name",
       "type": "string",
-      "description": "A unique identifier or descriptive name for the experiment"
+      "description": "A unique identifier or descriptive name for the experiment",
+      "$term": "https://schema.org/name"
     }
   },
   "$defs": {
@@ -47,12 +51,14 @@
         "pH": {
           "title": "pH",
           "type": "number",
-          "description": "pH of the reaction mixture (typically in pH units)"
+          "description": "pH of the reaction mixture (typically in pH units)",
+          "$term": "http://purl.obolibrary.org/obo/PATO_0001842"
         },
         "temperature": {
           "title": "temperature",
           "type": "number",
-          "description": "Temperature of the reaction mixture (typically in °C)"
+          "description": "Temperature of the reaction mixture (typically in °C)",
+          "$term": "http://purl.obolibrary.org/obo/PATO_0000146"
         }
       },
       "required": [],
@@ -66,17 +72,20 @@
         "initial_concentration": {
           "title": "initial_concentration",
           "type": "number",
-          "description": "Starting concentration of the enzyme in the reaction mixture (typically in mg/mL or μM)"
+          "description": "Starting concentration of the enzyme in the reaction mixture (typically in mg/mL or μM)",
+          "$term": "http://purl.obolibrary.org/obo/PATO_0000033"
         },
         "name": {
           "title": "name",
           "type": "string",
-          "description": "Enzyme name, EC number, or protein identifier from databases like UniProt"
+          "description": "Enzyme name, EC number, or protein identifier from databases like UniProt",
+          "$term": "https://schema.org/name"
         },
         "role": {
           "title": "role",
           "type": "string",
           "description": "Role of the enzyme in the reaction (enzyme, cofactor, inhibitor)",
+          "$term": "http://purl.obolibrary.org/obo/CHEBI_50906",
           "$ref": "#/$defs/Role"
         }
       },
@@ -91,17 +100,20 @@
         "initial_concentration": {
           "title": "initial_concentration",
           "type": "number",
-          "description": "Starting concentration of the molecule in the reaction mixture (typically in mM or μM)"
+          "description": "Starting concentration of the molecule in the reaction mixture (typically in mM or μM)",
+          "$term": "http://purl.obolibrary.org/obo/PATO_0000033"
         },
         "name": {
           "title": "name",
           "type": "string",
-          "description": "Chemical name or identifier (IUPAC name, common name, or database ID)"
+          "description": "Chemical name or identifier (IUPAC name, common name, or database ID)",
+          "$term": "https://schema.org/name"
         },
         "role": {
           "title": "role",
           "type": "string",
           "description": "Role of the molecule in the reaction (substrate, product, cofactor, inhibitor)",
+          "$term": "http://purl.obolibrary.org/obo/CHEBI_50906",
           "$ref": "#/$defs/Role"
         }
       },

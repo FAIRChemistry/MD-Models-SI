@@ -10,14 +10,14 @@
     <!-- Experiment Definition -->
     <xs:complexType name="ExperimentType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string">
+            <xs:element name="name" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         A unique identifier or descriptive name for the experiment
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="description" type="xs:string">
+            <xs:element name="description" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Detailed description of the experimental procedure, objectives, and
@@ -25,7 +25,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="molecules">
+            <xs:element name="molecules" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Array of all chemical compounds involved in the reaction (substrates,
@@ -34,11 +34,11 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="Molecule" type="MoleculeType" maxOccurs="unbounded"/>
+                        <xs:element name="Molecule" type="MoleculeType" minOccurs="0" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="enzymes">
+            <xs:element name="enzymes" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Array of all enzymes used as catalysts in the experiment
@@ -46,11 +46,11 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="Enzyme" type="EnzymeType" maxOccurs="unbounded"/>
+                        <xs:element name="Enzyme" type="EnzymeType" minOccurs="0" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="conditions" type="ConditionsType">
+            <xs:element name="conditions" type="ConditionsType" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Environmental parameters under which the experiment is conducted
@@ -63,14 +63,14 @@
     <!-- Molecule Definition -->
     <xs:complexType name="MoleculeType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string">
+            <xs:element name="name" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Chemical name or identifier (IUPAC name, common name, or database ID)
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="initial_concentration" type="xs:float">
+            <xs:element name="initial_concentration" type="xs:float" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Starting concentration of the molecule in the reaction mixture
@@ -78,7 +78,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="role" type="RoleType">
+            <xs:element name="role" type="RoleType" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Role of the molecule in the reaction (substrate, product, cofactor,
@@ -92,7 +92,7 @@
     <!-- Enzyme Definition -->
     <xs:complexType name="EnzymeType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string">
+            <xs:element name="name" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Enzyme name, EC number, or protein identifier from databases like
@@ -100,7 +100,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="initial_concentration" type="xs:float">
+            <xs:element name="initial_concentration" type="xs:float" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Starting concentration of the enzyme in the reaction mixture
@@ -108,7 +108,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="role" type="RoleType">
+            <xs:element name="role" type="RoleType" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Role of the enzyme in the reaction (enzyme, cofactor, inhibitor)
@@ -121,14 +121,14 @@
     <!-- Conditions Definition -->
     <xs:complexType name="ConditionsType">
         <xs:sequence>
-            <xs:element name="temperature" type="xs:float">
+            <xs:element name="temperature" type="xs:float" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Temperature of the reaction mixture (typically in °C)
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="pH" type="xs:float">
+            <xs:element name="pH" type="xs:float" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         pH of the reaction mixture (typically in pH units)

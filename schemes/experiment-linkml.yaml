@@ -1,7 +1,10 @@
-id: md
-name: Model Specification
+id: expm
+name: Model_Specification
 title: Model Specification
-default_prefix: md
+prefixes:
+  OBO: http://purl.obolibrary.org/obo/
+  schema: https://schema.org/
+default_prefix: expm
 default_range: string
 imports:
 - linkml:types
@@ -12,14 +15,18 @@ classes:
     attributes:
       name:
         description: A unique identifier or descriptive name for the experiment
+        slot_uri: schema:name
       description:
         description: Detailed description of the experimental procedure, objectives, and expected outcomes
+        slot_uri: schema:description
       molecules:
         description: Array of all chemical compounds involved in the reaction (substrates, products, cofactors, inhibitors)
+        slot_uri: OBO:CHEBI_23367
         range: Molecule
         multivalued: true
       enzymes:
         description: Array of all enzymes used as catalysts in the experiment
+        slot_uri: OBO:PR_000000001
         range: Enzyme
         multivalued: true
       conditions:
@@ -30,47 +37,50 @@ classes:
     attributes:
       name:
         description: Chemical name or identifier (IUPAC name, common name, or database ID)
+        slot_uri: schema:name
       initial_concentration:
         description: Starting concentration of the molecule in the reaction mixture (typically in mM or μM)
+        slot_uri: OBO:PATO_0000033
         range: float
       role:
         description: Role of the molecule in the reaction (substrate, product, cofactor, inhibitor)
+        slot_uri: OBO:CHEBI_50906
         range: Role
   Enzyme:
     description: An enzyme is a biological catalyst, typically a protein, that facilitates and accelerates specific chemical reactions by lowering the activation energy required. Enzymes are highly specific to their substrates and play crucial roles in metabolic pathways and biotechnological applications.
     attributes:
       name:
         description: Enzyme name, EC number, or protein identifier from databases like UniProt
+        slot_uri: schema:name
       initial_concentration:
         description: Starting concentration of the enzyme in the reaction mixture (typically in mg/mL or μM)
+        slot_uri: OBO:PATO_0000033
         range: float
       role:
         description: Role of the enzyme in the reaction (enzyme, cofactor, inhibitor)
+        slot_uri: OBO:CHEBI_50906
         range: Role
   Conditions:
     description: Conditions encompass the critical environmental and physical parameters that govern the experimental setup and directly influence enzyme activity, reaction kinetics, and overall experimental outcomes. These parameters must be carefully controlled and documented for reproducible results.
     attributes:
       temperature:
         description: Temperature of the reaction mixture (typically in °C)
+        slot_uri: OBO:PATO_0000146
         range: float
       pH:
         description: pH of the reaction mixture (typically in pH units)
+        slot_uri: OBO:PATO_0001842
         range: float
 enums:
   Role:
     permissible_values:
       COFACTOR:
-        meaning: cofactor
         description: cofactor
       ENZYME:
-        meaning: enzyme
         description: enzyme
       INHIBITOR:
-        meaning: inhibitor
         description: inhibitor
       PRODUCT:
-        meaning: product
         description: product
       SUBSTRATE:
-        meaning: substrate
         description: substrate
